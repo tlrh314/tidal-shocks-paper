@@ -112,8 +112,38 @@ disruption of galaxies rather than of globular clusters.
 \citep{1985ApJ...295..374A, 1986ApJ...307...97A}
 
 
+How clusters are affected by tidal shocks:
+\citep{1958ApJ...127...17S}
+\citep{1987degc.book.....S}
+\citep{2006MNRAS.371..793G}
+\citep{2011MNRAS.414.1339K}
+\citep{2016MNRAS.463L.103G}
+
+
+``By defining a tidal heating parameter \citep{2003ApJ...582..141G}, cluster's
+mass loss history can be estimated for any known tidal history.''
+
+
 \section{Simulations}
 \label{sec:simulations}
+
+\textsc{nbody6} \citep{2003gnbs.book.....A,2010gnbs.book.....A}
+\textsc{nbody6tt} \citep{2011MNRAS.418..759R,2015ascl.soft02010R,2015MNRAS.448.3416R}
+
+``Mode A: the tidal information is extracted from a galaxy or cosmology 
+simulation, in the form of tidal tensors, along one orbit. This method is 
+described in \citep{2011MNRAS.418..759R}''
+
+``Mode B: the user defines a numerical function which takes position and time 
+as arguments, and returns the galactic potential. This method is described in
+\citep{2015MNRAS.448.3416R}''
+
+\begin{itemize}
+    \item nbody6tt: Tidal tensors in N-body simulations \citep{2015ascl.soft02010R}
+\end{itemize}
+
+Initial cluster density: \citet{1966AJ.....71...64K} model with $W_0 = \{5, 7\}$
+or \citep{1911MNRAS..71..460P} profile.
 
 
 \section{Results}
@@ -136,18 +166,9 @@ TLRH acknowledges support from the International Max-Planck Research School
 
 The research was conducted using the Python \citep{python}
 programming language with the IPython \citep{2007CSE.....9c..21P} environment.
-We acknowledge 
-the Numpy \citep{2011CSE....13b..22V}, Scipy \citep{scipy}, and Astropy 
+We used the NumPy \citep{2011CSE....13b..22V}, SciPy \citep{scipy}, and Astropy 
 \citep{2013A&A...558A..33A} packages. Plots were generated using 
 Matplotlib \citep{2007CSE.....9...90H}.
-
-Python \citep{python}
-IPython \citep{2007CSE.....9c..21P}
-Numpy \citep{2011CSE....13b..22V}
-Scipy \citep{scipy}
-Astropy \citep{2013A&A...558A..33A}
-Matplotlib \citep{2007CSE.....9...90H}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
