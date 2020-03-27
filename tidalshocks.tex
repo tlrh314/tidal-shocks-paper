@@ -63,8 +63,8 @@
 
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
-\title[Tidal Shocked GCs]{The effect of tidal shocks onto the internal structure 
-    of globular clusters}
+\title[GCs in MWPotential2014]{The effect of the Galactic tidal field onto the 
+distribution of stars in the Milky Way globular clusters}
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
@@ -104,68 +104,129 @@ methods: numerical -- galaxies: formation -- galaxies: star clusters: general.
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
 
-\section{ToRead}
-\begin{itemize}
-\item \url{}
-\end{itemize}
-
 \section{Introduction}
 \label{sec:introduction}
-\citet{2018arXiv181200014W} study the effect of a tidal
 
-A similar study was conducted three decades ago, although the scope was tidal
-disruption of galaxies rather than of globular clusters.
-\citep{1985ApJ...295..374A, 1986ApJ...307...97A}
+We investigate whether the distribution of stars in the MW GCs is consistent
+with their orbits in the Galactic potential. 
 
 
-How clusters are affected by tidal shocks:
-\citep{1958ApJ...127...17S}
-\citep{1987degc.book.....S}
-\citep{2006MNRAS.371..793G}
-\citep{2011MNRAS.414.1339K}
-\citep{2016MNRAS.463L.103G}
+\todo[inline]{Effect of tidal shocks on clusters}
+\begin{itemize}
+\item \citet{2018arXiv181200014W} 
+\item \citep{1985ApJ...295..374A, 1986ApJ...307...97A}
+\item \citet{1958ApJ...127...17S}
+\item \citet{1987degc.book.....S}
+\item \citet{2006MNRAS.371..793G}
+\item \citet{2011MNRAS.414.1339K}
+\item \citet{2016MNRAS.463L.103G}
+\end{itemize}
 
-
+\todo[inline]{
 ``By defining a tidal heating parameter \citep{2003ApJ...582..141G}, cluster's
 mass loss history can be estimated for any known tidal history.''
-
 
 \url{https://arxiv.org/pdf/1911.01548.pdf}
 ``If the dynamical evolution timescale is larger than the orbital period, these 
 stripped stars remain for some time on approximately the mean orbit of the 
 progenitor (Lynden-Bell \& Lynden-Bell 1995)''
+}
+
+
+
+We summarise observations of the distribution of stars in the MW GCs and the
+initial conditions for the orbit integrations in section~\ref{sec:observations}.
+We present our method in section~\ref{sec:simulations}, 
+results in section~\ref{sec:results}, 
+discussion in section~\ref{sec:discussion} 
+and conclude in section~\ref{sec:conclusion}.
+
+\section{Observations}
+\label{sec:observations}
+Recent observational catalogues now provide full 6D phase space information for
+the Milky Way (MW) globular cluster (GC) system. \citet{2019MNRAS.482.5138B,2020IAUS..351..451H}
+published\footnote{\url{https://people.smp.uq.edu.au/HolgerBaumgardt/globular},
+version Jan. 2020} mean proper motions (PMs) and line-of-sight (radial) velocities 
+(RVs) of 159 MW GCs and compiled velocity dispersion profiles of 141 MW GCs. The 
+authors combined PMs from HST \citep{2014ApJ...797..115B,2015ApJ...803...29W}
+and \textit{Gaia} DR2 measurements with RVs from MUSE integral-field spectroscopy
+\citep{2018MNRAS.473.5591K} and from the WAGGS survey and archival AAT data 
+\citep{2020MNRAS.492.3859D}. 
+\todo[inline]{
+The details of the N-body models can be found in \citet{2017MNRAS.464.2174B}, 
+and \citet{2018MNRAS.478.1520B}.
+Details on the stellar mass functions can be found in \citet{2017MNRAS.471.3668S}.
+Finally, the rotation profiles of the clusters were derived in \citet{2019MNRAS.485.1460S}.
+}
+
+In addition, \citet{2019MNRAS.485.4906D} studied the distribution of stars in 81 MW GCs using
+observations of their radial number density profiles stitched together from 
+\textit{Gaia} DR2 \citep{2016A&A...595A...1G,2016A&A...595A...2G,2018A&A...616A...2L}
+observations of the outer regions 
+together with 26 Hubble Space Telescope (HST) star count profiles \citep{2013ApJ...774..151M} 
+plus ground-based surface brightness profiles \citep{1995AJ....109..218T,1995AJ....109.1912T}
+of the inner regions. 
+\todo[inline]{
+Decide which references suffice for DR2, so either drop or include the following:
+``parallax and PM down to G=21 (Evans+ 2018, Lindegren+ 2018, Riello+ 2018),
+RVs from \textit{Gaia} RV spectrometer (RVS) spectrograph (Cropper+ 2018, Sartoretti+ 2018),
+dust maps (Schlegel+ 1998) /w coefficients from  Schlafly \& Finkbeiner 2011,
+extinction from Schlegel+ 1998, Harris+ 1996, 2010 ed''
+}
+\noindent The authors fit the lowered isothermal models of \citet{1966AJ.....71...64K}, 
+\citet{1975AJ.....80..175W}, \citet{2015MNRAS.454..576G,2018MNRAS.474.3997G}
+and the spherical models of star clusters with potential escapers
+\citep[SPES,][]{2017MNRAS.466.3937C,2019MNRAS.487..147C} using the \textsc{limepy} code
+\citep{2015MNRAS.454..576G,2018MNRAS.474.3997G}.
+\todo[inline]{
+Paraphrase and add to introduction:
+``Davoust (1977) showed that the King and Wilson models are members of a general
+family of models, Gomez-Leyton \& Velazquez (2014) generalised the model to
+non-integer terms. Gieles \& Zocchi (2015) added radial velocity isotropy
+(Eddington 1915, Michie 1963), multiple mass components (Da Costa \& Freeman 1976,
+Gunn \& Griffin 1979)''
+}
+
+\citet{2018MNRAS.474.2479B} conducted a study of MW GC mass evolution along
+their orbit in the MWPotential2014, using \textsc{Galpy} for orbit integrations
+coupled to the \textsc{emacss} \citep{2012MNRAS.422.3415A,2014MNRAS.442.1265A,
+2014MNRAS.437..916G} code for the GC mass evolution. The initial conditions
+for the orbit realisations were compiled from the literature before \textit{Gaia} DR2.
+The authors calculate the initial mass of MW GCs, mass loss, and Jacobi radii. \\
+
+
 
 
 \section{Simulations}
 \label{sec:simulations}
 
-\textsc{nbody6} \citep{2003gnbs.book.....A,2010gnbs.book.....A}
-\textsc{nbody6tt} \citep{2011MNRAS.418..759R,2015ascl.soft02010R,2015MNRAS.448.3416R}
-
-``Mode A: the tidal information is extracted from a galaxy or cosmology 
-simulation, in the form of tidal tensors, along one orbit. This method is 
-described in \citep{2011MNRAS.418..759R}''
-
-``Mode B: the user defines a numerical function which takes position and time 
-as arguments, and returns the galactic potential. This method is described in
-\citep{2015MNRAS.448.3416R}''
-
+\todo[inline]{Various options}
 \begin{itemize}
-    \item nbody6tt: Tidal tensors in N-body simulations \citep{2015ascl.soft02010R}
+    \item \textsc{nbody6} \citep{2003gnbs.book.....A,2010gnbs.book.....A}
+    \item \textsc{nbody6tt} \citep{2011MNRAS.418..759R,2015ascl.soft02010R,2015MNRAS.448.3416R}
+    \begin{itemize}
+        \item ``Mode A: the tidal information is extracted from a galaxy or cosmology 
+            simulation, in the form of tidal tensors, along one orbit. This method is 
+            described in \citep{2011MNRAS.418..759R}''
+        \item ``Mode B: the user defines a numerical function which takes position and time 
+            as arguments, and returns the galactic potential. This method is described in
+            \citep{2015MNRAS.448.3416R}''
+    \end{itemize}
+    \item ICs with \textsc{McLuster} \citep{2011ascl.soft07015K,2011MNRAS.417.2300K}
+    \item \textsc{galpy} \citep{2015ApJS..216...29B}
+    \begin{itemize}
+        \item \textsc{galpy.potential.ttensor} \citep{2019MNRAS.488.5748W}
+        \item \textsc{galpy.potential.rtide} \citep{2019MNRAS.488.5748W}
+        \item \textsc{galpy.potential.to\_amuse} \citep{2019arXiv191001646W}
+        \item \textsc{MWPotential2014} \citep{2015ApJS..216...29B}
+    \end{itemize}
+    \item \textsc{amuse} \citep{2009NewA...14..369P,2013CoPhC.184..456P,
+        2013A&A...557A..84P,2018araa.book.....P}
+    \item \textsc{Gadget-2} \citep{2001NewA....6...79S,2005MNRAS.364.1105S}
+    \item \textsc{Arepo} \citep{2010MNRAS.401..791S,2011MNRAS.418.1392P,
+        2013MNRAS.432..176P,2016MNRAS.455.1134P}
+    \item \textsc{Arepo-public} \citep{2019arXiv190904667W}
 \end{itemize}
-
-Initial cluster density: \citet{1966AJ.....71...64K} model with $W_0 = \{5, 7\}$
-or \citep{1911MNRAS..71..460P} profile.
-
-
-ICs with \textsc{McLuster} \citep{2011ascl.soft07015K,2011MNRAS.417.2300K}
-
-
-\textsc{galpy} \citep{2015ApJS..216...29B}
-\textsc{galpy.potential.ttensor} and \textsc{galpy.potential.rtide} \citep{2019MNRAS.488.5748W}
-\textsc{galpy.potential.to\_amuse} \citep{2019arXiv191001646W}
-
-\textsc{MWPotential2014} \citep{2015ApJS..216...29B}
 
 
 \section{Results}
@@ -209,9 +270,110 @@ Plots were generated using \textsc{Matplotlib} \citep{2007CSE.....9...90H}.
 
 %%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
 
-% \appendix
-% 
-% \section{Some extra material}
+\appendix
+
+\section{Simulations}
+\begin{table*}\caption{Stability and runtime checks for different parameters}
+\begin{tabular}{l l c c c c c}
+    \hline
+    GC & model & N & $\epsilon$ & dt & $\eta$ & seed \\
+    \hline
+    NGC 104 & King & $10^3$ & 0.1 & 0-0.01 & 0.025 & 1337 \\
+    NGC 104 & King & $10^4$ & 0.1 & 0-0.01 & 0.025 & 1337 \\
+    NGC 104 & King & $10^4$ & 1.0 & 0-0.01 & 0.025 & 1337 \\
+    NGC 104 & King & $10^4$ & 0.01 & 0-0.01 & 0.025 & 1337 \\
+    NGC 104 & King & $10^5$ & 0.1 & 0-0.01 & 0.025 & 1337 \\
+    \hline
+    \hline
+\end{tabular}
+\end{table*}
+
+\begin{table*}\caption{Emcee fits for fun}
+\begin{tabular}{l c c c c}
+NGC 104
+NGC 288
+NGC 362
+NGC 1261
+Pal 1
+NGC 1851
+NGC 1904
+NGC 2298
+NGC 2419
+NGC 2808
+NGC 3201
+NGC 4147
+NGC 4590
+NGC 5024
+NGC 5053
+NGC 5139
+NGC 5272
+NGC 5286
+NGC 5466
+NGC 5634
+NGC 5694
+IC 4499
+NGC 5824
+NGC 5897
+NGC 5904
+NGC 5986
+NGC 6093
+NGC 6121
+NGC 6101
+NGC 6144
+NGC 6139
+NGC 6171
+NGC 6205
+NGC 6229
+NGC 6218
+NGC 6235
+NGC 6254
+NGC 6266
+NGC 6273
+NGC 6284
+NGC 6293
+NGC 6341
+NGC 6325
+NGC 6333
+NGC 6352
+NGC 6366
+NGC 6362
+NGC 6388
+NGC 6402
+NGC 6397
+NGC 6426
+NGC 6496
+NGC 6539
+NGC 6541
+IC 1276
+NGC 6569
+NGC 6584
+NGC 6624
+NGC 6626
+NGC 6637
+NGC 6652
+NGC 6656
+Pal 8
+NGC 6681
+NGC 6715
+NGC 6717
+NGC 6723
+NGC 6752
+NGC 6779
+NGC 6809
+Pal 11
+NGC 6864
+NGC 6934
+NGC 6981
+NGC 7006
+NGC 7078
+NGC 7089
+NGC 7099
+Pal 12
+NGC 7492
+    \hline
+    \hline
+\end{tabular}
+\end{table*}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
