@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{hyperref, nameref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}
+
+\begin{document}
+
+\title{Internal structure of (globular) star clusters}
+\author{T.L.R. Halbesma}
+
+\maketitle
+
+
+\section{Timescales}\label{sec:timescales}
+\begin{itemize}
+    \item \nameref{sec:t_cross}
+    \item \nameref{sec:t_relax}
+    \item \nameref{sec:t_equipartition}
+\end{itemize}
+
+
+\subsection{Crossing Time}\label{sec:t_cross}
+Copy-Pasta from \citet{2010gnbs.book.....A} \\
+
+``The crossing time is undoubtedly the most intuitive time-scale relating to 
+self-gravitational systems. For a system in approximate dynamical equilibrium
+it is defined by 
+\begin{align}
+t_{\text{cr}} &= 2 R_V / \sigma \quad ,
+\end{align}
+\noindent where $R_V$ is the virial radius, obtained 
+from the potential energy by $R_V = G N^2 \bar{m}^2 / 2 |U|$, and $\sigma$ is 
+the rms velocity dispersion. In a state of approximate equilibrium, 
+$\sigma^2 \approx GN \bar{m} / 2 R_V$, which gives 
+
+\begin{align}
+t_{\text{cr}} &\approx 2 \sqrt{2} (R_V^3 / G N \bar{m})^{1/2} \quad ,
+\end{align}
+\noindent with $\bar{m}$ the mean mass, or alternatively 
+$t_{\text{cr}} = G (N \bar{m})^{5/2} / (2 |E|)^{3/2}$ from $E = \frac{1}{2}U$.
+Unless the total energy is positive, any significant deviation frmo overall 
+equilibrium causes a stellar system to adjust globally on this timescale which
+is also comparable to the free-fall time.
+
+
+\subsection{Relaxation Time}\label{sec:t_relax}
+``The subject of relaxation time is fundamental and was mainly formulated by
+Rosseland [1928], Ambartsumian [1938, 1985], Spitzer [1940] and
+Chandrasekhar [1942]. The classical expression is given by
+
+\begin{align}
+    T_E &= \frac{1}{16} \left(\frac{3 \pi}{2}\right)^{1/2} 
+        \left(\frac{NR^3}{Gm}\right)^{1/2} \frac{1}{\ln{0.4N}}
+\end{align}
+\noindent where R is the size of the homogeneous system [Chandrasekhar, 1942].
+For the purposes of star cluster dynamics, the half-mass relaxation time is
+perhaps more useful since it is not sensitive to the density profile.
+
+Following Spitzer [1987], it is defined by\footnote{Also see Spitzer \& Hart [1971a]
+for an alternative derivation.}
+\begin{align}
+    t_{\text{rh}} &= 0.138 \left(\frac{Nr_h^3}{Gm}\right)^{1/2} \frac{1}{\ln{(\gamma N)}},
+\end{align}
+\noindent where $r_h$ is the half-mass radius and $\Lambda = \gamma N$ is the
+argument of the Coulomb logarithm. Formally this factor is obtainer by integrating
+over all impact parameters in two-body encounters, with a historical value of
+$\gamma = 0.4$.''
+
+
+\subsection{Equipartition Time}\label{sec:t_equipartition}
+Analysis of a two-component system dominated by light particles gave rise to 
+the equipartition time for kinetic energy [Spitzer, 1969]
+\begin{align}
+    t_{\text{eq}} &= \frac{( \bar{v_1^2} + \bar{v_2^2})^{3/2}}{8(6 \pi)^{1/2} G^2 \rho_{01} m_2 \ln N_1}
+\end{align}
+
+
+
+\newpage
+\section{Radii}\label{sec:radii}
+\begin{itemize}
+    \item \nameref{sec:r_vir}
+    \item \nameref{sec:r_cl}
+\end{itemize}
+
+\subsection{Virial Radius}\label{sec:r_vir}
+\begin{align}
+    R_V = G N^2 \bar{m}^2 / 2 |U|
+\end{align}
+
+\subsection{Close Encounter}\label{sec:r_cl}
+\begin{align}
+    R_{\text{cl}} = 2 G \bar{m} / sigma^2
+\end{align}
+\noindent which takes the simple form $R_{\text{cl}} \approx 4 R_V / N$ at
+equilibrium.
+
+
+
+\bibliographystyle{mnras}
+\bibliography{tidalshocks}
+
+\end{document}
